@@ -106,10 +106,18 @@ AudioletNode.prototype.tick = function() {
 
     this.generate();
     
+    //Visualization Buffer
     if(!this.buffer){
-        //Create this.buffer
+        //Create this.buffer - #Channels, Length
+        this.buffer = [];
     }
     //Fill this.buffer
+    if(this.buffer.length < 48000){
+        this.buffer.push(this.outputs[i].samples[0]);
+    }else{
+        this.buffer.shift();
+        this.buffer.push(this.outputs[i].samples[0]);
+    }
     
 };
 
