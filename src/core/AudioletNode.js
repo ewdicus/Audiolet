@@ -116,7 +116,7 @@ AudioletNode.prototype.tick = function() {
     }
     
     if(this.visIndex < 48000){
-        this.visBuffer.push(this.outputs[0].samples[0]);
+        this.visBuffer[this.visIndex] = this.outputs[0].samples[0];
         this.visIndex++;
     }else{
         this.visIndex = 0;
