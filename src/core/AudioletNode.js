@@ -105,6 +105,12 @@ AudioletNode.prototype.tick = function() {
     this.createOutputSamples();
 
     this.generate();
+    
+    if(!this.buffer){
+        //Create this.buffer
+    }
+    //Fill this.buffer
+    
 };
 
 /**
