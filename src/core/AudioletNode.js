@@ -107,24 +107,17 @@ AudioletNode.prototype.tick = function() {
     this.generate();
     
     //Visualization Buffer
-    if(!this.tmpBuffer){
-        this.tmpBuffer = new Float32Array(48000);
-    }
     if(!this.visBuffer){
-        this.visBuffer = new Float32Array(48000);
+        this.visBuffer = new Float32Array(4096);
         this.visIndex = 0;
     }
     
-    if(this.visIndex < 48000){
+    if(this.visIndex < 4096){
         this.visBuffer[this.visIndex] = this.outputs[0].samples[0];
         this.visIndex++;
     }else{
         this.visIndex = 0;
-        for(var i=0;i<this.visBuffer.length;i++){
-            this.tmpBuffer[i] = this.visBuffer[i];
-        }
     }
-    
 };
 
 /**
